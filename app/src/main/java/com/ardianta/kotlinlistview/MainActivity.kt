@@ -15,6 +15,8 @@ class MainActivity : AppCompatActivity() {
 
         listView = findViewById<ListView>(R.id.recipe_list_view)
         val recipeList = Recipe.getRecipesFromFile("recipes.json", this)
+
+
         val listItems = arrayOfNulls<String>(recipeList.size)
 
         for(i in 0 until recipeList.size){
@@ -22,7 +24,8 @@ class MainActivity : AppCompatActivity() {
             listItems[i] = recipe.title
         }
 
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listItems)
+        //val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listItems)
+        val adapter = RecipeAdapter(this, recipeList)
         listView.adapter = adapter
     }
 }
